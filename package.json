@@ -1,0 +1,28 @@
+{
+  "name": "The-Async-Force-Ep-1",
+  "version": "1.0.0",
+  "description": "An **async** Exercise using **client side** XHR accessing the swapi API at https://swapi.co",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhoun/The-Async-Force-Ep-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhoun/The-Async-Force-Ep-1/issues"
+  },
+  "xo": {
+    "esnext": true,
+    "space": true,
+    "globals": [
+      "window"
+    ]
+  }
+
+  "homepage": "https://github.com/jhoun/The-Async-Force-Ep-1#readme"
+}
