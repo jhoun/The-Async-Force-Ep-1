@@ -1,24 +1,85 @@
 (function(window){
 
-function person4Name(){
-  console.log(this.responseText);
+//DARTH VADER OBJECT
+//first request to get name
+var oReq1 = new XMLHttpRequest();
+oReq1.addEventListener("load", getName1);
+oReq1.open("GET", "http://swapi.co/api/people/4/");
+oReq1.send();
+
+//from the addEventListener
+function getName1(){
   var darthVader = JSON.parse(this.responseText);
-  console.log(darthVader);
-  var name = document.getElementById("person4Name");
+  var name = document.getElementById('person4Name');
   name.innerHTML = darthVader.name;
 
+  //second request to get homeworld
+  var oReq1Home = new XMLHttpRequest();
+  oReq1Home.addEventListener("load", getHome);
+  oReq1Home.open("GET", darthVader.homeworld);
+  oReq1Home.send();
 
+  // add 2nd function so you can sync in order
+  function getHome(){
+    var darthVader = JSON.parse(this.responseText);
+    var name = document.getElementById('person4HomeWorld');
+    name.innerHTML = "Home Planet: " + darthVader.name;
+  }
 }
 
+//HAN SOLO OBJECT
+var oReq2 = new XMLHttpRequest();
+oReq2.addEventListener("load", getName2);
+oReq2.open("Get", "http://swapi.co/api/people/14/");
+oReq2.send();
 
+function getName2 (){
+  var hanSolo = JSON.parse(this.responseText);
+  var name = document.getElementById('person14Name');
+  name.innerHTML = hanSolo.name;
 
+  var oReq2Species = new XMLHttpRequest();
+  oReq2Species.addEventListener("load", getSpecies);
+  oReq2Species.open("GET", hanSolo.species);
+  oReq2Species.send();
 
-var oReq = new XMLHttpRequest();
-
-
-var oReq = new XMLHttpRequest();
-oReq.addEventListener("load", person4Name);
-oReq.open("GET", "http://swapi.co/api/people/4/");
-oReq.send();
-
+  function getSpecies (){
+    var hanSolo = JSON.parse(this.responseText);
+    var species = document.getElementById('person14Species');
+    species.innerHTML = "Species: " + hanSolo.name;
+  }
+  }
 }(window));
+
+
+// //films part
+// let filmList = document.getElementById("filmList"); //<ul>
+// let filmsReq = new XMLHttpRequest();
+// filmsReq.addEventListener('Load', function(){
+//   // this happens after we get list item
+//   let films = JSON.parse(this.responseText);
+//   console.log(films.results);
+
+//   for (var i =0, len = films.results.length; i < len; i++){
+//     let filmListItem = document.createElement('li');
+//     let filmeTitleHeader = document.createElement('h2');
+//     filmeTitleHeader.innerHTML = films.results[i].title;
+//     filmList.appendChild(filmListHeader);
+//   }
+
+//   <!-- example
+//           <li class="film">
+//             <h2 class="filmTitle"></h2>
+//             <h3>Planets</h3>
+//             <ul class="filmPlanets">
+//               <li class="planet">
+//                 <h4 class="planetName"></h4>
+//               </li>
+//             </ul>
+//           </li>
+//         -->
+
+// });
+// filmsReq.open('GET', "http://swapi.co/api/films/");
+// films.send();
+
